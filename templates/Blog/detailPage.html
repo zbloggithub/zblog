@@ -1,0 +1,340 @@
+{% load staticfiles %}
+{% load Study_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>详细页</title>
+	<!-- 图标字体库 -->
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<!-- bootstrap前端开发框架 -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<!-- 滑动，轮播图的效果 -->
+	<link rel="stylesheet" href="{% static 'css/slick.css' %}">
+	<!-- css动画 -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- 主要的样式 -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<!-- 响应式布局 -->
+	<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+	<!-- 网站的主要颜色 -->
+	<link rel="stylesheet" href="{% static 'css/colors.css' %}">
+    <!-- 小方面的修饰 -->
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body class="version-ii">
+    <!-- 网页加载时所显示的图片 begin-->
+    <div class="loader-holder">
+        <div class="shaft-load3">
+            <div class="shaft1"></div>
+            <div class="shaft2"></div>
+            <div class="shaft3"></div>
+            <div class="shaft4"></div>
+            <div class="shaft5"></div>
+            <div class="shaft6"></div>
+            <div class="shaft7"></div>
+            <div class="shaft8"></div>
+            <div class="shaft9"></div>
+            <div class="shaft10"></div>
+        </div>
+    </div>
+    <!-- 网页加载时所显示的图片 end-->
+    <div id="wrapper">
+        <div class="w1">
+            <!-- 最上面的导航部分 -->
+            <header id="header" class="version-ii">
+                <div class="stick-holder">
+                    <div class="container">
+                        <div class="row holder">
+                            <div class="col-xs-3 col-sm-2">
+                                <!-- 左上角的logo -->
+                                <div class="logo"><a href="{% url 'Index:index' %}"><img src="{% static 'images/ZBlog2.png' %}" alt="dot"></a></div>
+                                <!-- 左上角的logo end -->
+                            </div>
+                            <div class="col-xs-9 col-sm-10 nav-holder">
+                                <nav id="nav" class="navbar navbar-default">
+                                    <!-- 右上角的目录 -->
+                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                        <ul class="nav navbar-nav navbar-right">
+                                            <li><a href="{% url 'Index:index' %}">首页</a></li>
+                                            <li><a href="{% url 'Study:index' %}">学无止境</a></li>
+                                            <li><a href="{% url 'life:index' %}">慢生活</a></li>
+                                            <li><a href="regard.html">关于我</a></li>
+                                            <li><a href="message.html">留言</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- 右上角的目录 -->
+                                </nav>
+						    </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- 最上面的导航部分 end -->
+            <!-- 详细页 -->
+            <main id="main" role="main">
+                <!-- 图片 -->
+                <header class="page-head wow fadeInUp" data-wow-delay="0.6s" style="background-image: url({% static 'images/image16.jpg' %});">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h1>详细页</h1>
+                                <ol class="breadcrumb">
+                                    <li><a href="{% url 'Study:index' %}">学无止境</a></li>
+                                    <li class="active">详细页</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- 图片 end -->
+                <div id="twocolumns" class="container">
+                    <div class="row">
+                        <div id="content" class="col-xs-12 col-md-8">
+                            <!-- 博客的内容 -->
+                            <section class=" recent-posts-widget wow fadeInUp" data-wow-delay="0.6s">
+                                <article class="post post-{{ post.pk }}">
+                                <header class="entry-header">
+                                    <h1 class="entry-title">{{ post.title }}</h1>
+                                    <div class="entry-meta">
+                                        <span class="post-category"><a href="#">{{ post.category.name }}</a></span>
+                                        <span class="post-date"><a href="#"><time class="entry-date"
+                                                                                  datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
+                                        <span class="post-author"><a href="#">{{ post.author }}</a></span>
+                                        <span class="comments-link"><a href="#">4 评论</a></span>
+                                        <span class="views-count"><a href="#">588 阅读</a></span>
+                                    </div>
+                                </header>
+                                <div class="entry-content clearfix">
+                                    {{ post.body|safe }}
+                                </div>
+                                </article>
+                            </section>
+                            <!-- 博客的内容 end-->
+                            <!-- 评论 -->
+                            <section class=" recent-posts-widget wow fadeInUp" data-wow-delay="1s">
+                                <section class="comment-area" id="comment-area">
+                                <hr>
+                                <h3>发表评论</h3>
+                                <form action="{% url 'comments:post_comment' post.pk %}" method="post" class="comment-form">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="{{ form.name.id_for_label }}">名字：</label>
+                                            {{ form.name }}
+                                            {{ form.name.errors }}
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="{{ form.email.id_for_label }}">邮箱：</label>
+                                            {{ form.email }}
+                                            {{ form.email.errors }}
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="{{ form.text.id_for_label }}">评论：</label>
+                                            {{ form.text }}
+                                            {{ form.text.errors }}
+                                            <button type="submit" class="comment-btn">发表</button>
+                                        </div>
+                                    </div>    <!-- row -->
+                                </form>
+                                <div class="comment-list-panel">
+                                    <h3>评论列表，共 <span>4</span> 条评论</h3>
+                                    <ul class="comment-list list-unstyled">
+                                        {% for comment in comment_list %}
+                                        <li class="comment-item">
+                                            <span class="nickname">{{ comment.name }}</span>
+                                            <time class="submit-date" datetime="2012-11-09T23:15:57+00:00">{{ comment.created_time }}</time>
+                                            <div class="text">
+                                                {{ comment.text }}
+                                            </div>
+                                        </li>
+                                        {% empty %}
+                                        暂无评论
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </section>
+                            </section>
+                            <!-- 评论 end-->
+                        </div>
+
+                        <!-- 分类、标签、关于 -->
+                        <aside id="sidebar" class="col-xs-12 col-md-4">
+                            <!-- 最新文章 -->
+                            <section class="widget recent-posts-widget wow fadeInUp" data-wow-delay="0.6s">
+                                {% get_recent_post as recent_post_list %}
+                                <header class="widget-head">
+                                    <h3>最新文章</h3>
+                                </header>
+                                <ol>
+                                    {% for post in recent_post_list %}
+                                        {% if post.pk|divisibleby:3 %}
+                                        <li>
+                                            <h4><a href="{{ post.get_absolute_url }}">{{ post.title }} <br></a></h4>
+                                            <span class="post-tag">
+                                                <time datetime="2011-01-12"><a href="#">{{ post.created_time }}</a></time>
+                                                <strong class="tag hot">HOT</strong>
+                                            </span>
+                                        </li>
+                                        {% elif post.pk|divisibleby:2 %}
+                                        <li>
+                                            <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                                            <span class="post-tag">
+                                                <time datetime="2011-01-12"><a href="#">{{ post.created_time }}</a></time>
+                                                <strong class="tag">trending</strong>
+                                            </span>
+                                        </li>
+                                        {% else %}
+                                        <li>
+                                            <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                                            <span class="post-tag">
+                                                <time datetime="2011-01-12"><a href="#">{{ post.created_time }}</a></time>
+                                            </span>
+                                        </li>
+                                        {% endif %}
+                                    {% empty %}
+                                    暂无文章！
+                                    {% endfor %}
+        {#                            <li>#}
+        {#                                <h4><a href="single-post.html">Django 博客使用 Markdown <br>自动生成文章目录.</a></h4>#}
+        {#                                <span class="post-tag">#}
+        {#                                    <time datetime="2011-01-12"><a href="#">3月23日</a></time>#}
+        {#                                    <strong class="tag">trending</strong>#}
+        {#                                </span>#}
+        {#                            </li>#}
+        {#                            <li>#}
+        {#                                <h4><a href="single-post.html">部署 Django 博客.</a></h4>#}
+        {#                                <span class="post-tag">#}
+        {#                                    <time datetime="2011-01-12"><a href="#">3月23日</a></time>#}
+        {#                                </span>#}
+        {#                            </li>#}
+                                </ol>
+                            </section>
+                            <!-- 最新文章 end-->
+                            <!-- 分类 -->
+                            <div class="widget widget_categories tabs wow fadeInUp" data-wow-delay="0.6s">
+                                {% get_categories as category_list %}
+                                <header class="widget-head">
+                                    <h3>分类</h3>
+                                    <p></p>
+                                </header>
+                                <div class="lists-holder">
+                                    <ul>
+                                        {% for category in category_list %}
+                                        <li class="cat-item cat-item-1">
+                                            <a href="{% url 'Study:category' category.pk %}">{{ category.name }} </a> (23)
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 分类 end-->
+                            <!-- 标签 -->
+                            <div class="widget widget2-tag-cloud tabs wow fadeInUp" data-wow-delay="0.6s">
+                                <header class="widget-head">
+                                    <h3>标签云</h3>
+                                    <p></p>
+                                </header>
+                                <ul>
+                                    <li>
+                                        <a href="#">Django</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Python</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Java</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">mysql</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">文档</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">AngularJS</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">CSS</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">JavaScript</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Snippet</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">jQuery</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- 标签 end-->
+                        </aside>
+                        <!-- 分类、标签、关于 end-->
+                    </div>
+                </div>
+                <!-- 自动播放的图片 -->
+                <div class="instagram-slider container-fluid">
+                    <div class="row">
+                        <div class="mask">
+                            <div class="slideset">
+                                <div class="slide">
+                                    <a href="#"><img src="{% static 'images/image01.jpg' %}" alt="image description"></a>
+                                </div>
+                                <div class="slide">
+                                    <a href="#"><img src="{% static 'images/image02.jpg' %}" alt="image description"></a>
+                                </div>
+                                <div class="slide">
+                                    <a href="#"><img src="{% static 'images/image03.jpg' %}" alt="image description"></a>
+                                </div>
+                                <div class="slide">
+                                    <a href="#"><img src="{% static 'images/image04.jpg' %}" alt="image description"></a>
+                                </div>
+                                <div class="slide">
+                                    <a href="#"><img src="{% static 'images/image01.jpg' %}" alt="image description"></a>
+                                </div>
+                                <div class="slide">
+                                    <a href="#"><img src="{% static 'images/image02.jpg' %}" alt="image description"></a>
+                                </div>
+                                <div class="slide">
+                                    <a href="#"><img src="{% static 'images/image03.jpg' %}" alt="image description"></a>
+                                </div>
+                                <div class="slide">
+                                    <a href="#"><img src="{% static 'images/image04.jpg' %}" alt="image description"></a>
+                                </div>
+                                <div class="slide">
+                                    <a href="#"><img src="{% static 'images/image01.jpg' %}" alt="image description"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 自动播放的图片 end-->
+            </main>
+            <!-- 详细页 end -->
+            <!-- 页脚 -->
+            <footer id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>Copyright &copy; 2018.江西师范大学.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- 页脚 end-->
+            <!-- 返回顶部 -->
+            <span id="back-top" class="fa fa-angle-up"></span>
+            <!-- 返回顶部 end-->
+            <div id="style-changer" data-src="inc/style-changer.html"></div>
+        </div>
+    </div>
+    <!-- js库 -->
+	<script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- 主要的Jquery部分 -->
+    <script src="{% static 'js/jquery.main.js' %}"></script>
+</body>
+</html>
+

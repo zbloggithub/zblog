@@ -1,0 +1,113 @@
+{% extends 'Index/base.html' %}
+{% load Study_tags %}
+{% load staticfiles %}
+{% block main %}
+    <div id="twocolumns">
+        <div class="container">
+            <div class="row">
+                <div id="content" class="col-xs-12 col-md-8">
+                    {% block Smain %}
+                    {% endblock Smain %}
+                    <!-- 分页 -->
+                    <nav role="navigation" class="navigation pagination">
+                        <div class="nav-links">
+                            <a href="#" class="prev page-numbers">上一页.</a>
+                            <a href="#" class="page-numbers">1</a>
+                            <span class="page-numbers current">2</span>
+                            <span class="page-numbers dots hidden">…</span>
+                            <a href="#" class="page-numbers">3</a>
+                            <a href="#" class="next page-numbers">下一页.</a>
+                        </div>
+                    </nav>
+                    <!-- 分页 end -->
+                </div>
+                <!-- 分类、标签、关于 -->
+                <aside id="sidebar" class="col-xs-12 col-md-4">
+                    <!-- 关于我 begin-->
+                    <div class="Mcontainer wow fadeInUp" data-wow-delay="0.6s">
+                        <Mheader>
+                            <div class="Mbio">
+                                <img src="{% static 'images/image15.jpg' %}" alt="background" class="Mbg">
+                                <div class="Mdesc">
+                                    <h3>@慢生活</h3>
+                                    <p>相逢太短，等不及茶凉<br>如果不能渡你上岸，我愿陪你数尽人生波澜</p>
+                                </div>
+                            </div>
+                            <div class="Mavatarcontainer">
+                                <img src="{% static 'images/image06.jpg' %}" alt="avatar" class="Mavatar">
+                                <div class="Mhover">
+                                    <div class="Micon-twitter"></div>
+                                </div>
+                            </div>
+                        </Mheader>
+                        <div class="Mcontent">
+                            <div class="Mdata">
+                                <h3>ZB</h3>
+                                微信号：ZB33337777<br>
+                                Email:1458072238@qq.com
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 关于我 end-->
+                    <!-- 最新文章 -->
+                    <section class="widget recent-posts-widget wow fadeInUp" data-wow-delay="0.6s">
+                        {% get_recent_post as recent_post_list %}
+                        <header class="widget-head">
+                            <h3>最新文章</h3>
+                        </header>
+                        <ol>
+                            {% for post in recent_post_list %}
+                                {% if post.pk|divisibleby:3 %}
+                                <li>
+                                    <h4><a href="{{ post.get_absolute_url }}">{{ post.title }} <br></a></h4>
+                                    <span class="post-tag">
+                                        <time datetime="2011-01-12"><a href="#">{{ post.created_time }}</a></time>
+                                        <strong class="tag hot">HOT</strong>
+                                    </span>
+                                </li>
+                                {% elif post.pk|divisibleby:2 %}
+                                <li>
+                                    <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                                    <span class="post-tag">
+                                        <time datetime="2011-01-12"><a href="#">{{ post.created_time }}</a></time>
+                                        <strong class="tag">trending</strong>
+                                    </span>
+                                </li>
+                                {% else %}
+                                <li>
+                                    <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                                    <span class="post-tag">
+                                        <time datetime="2011-01-12"><a href="#">{{ post.created_time }}</a></time>
+                                    </span>
+                                </li>
+                                {% endif %}
+                            {% empty %}
+                            暂无文章！
+                            {% endfor %}
+                        </ol>
+                    </section>
+                    <!-- 最新文章 end-->
+                    <!-- 分类 -->
+                    <div class="widget widget_categories tabs wow fadeInUp" data-wow-delay="0.6s">
+                        {% get_categories as category_list %}
+                        <header class="widget-head">
+                            <h3>分类</h3>
+                            <p></p>
+                        </header>
+                        <div class="lists-holder">
+                            <ul>
+                                {% for category in category_list %}
+                                <li class="cat-item cat-item-1">
+                                    <a href="{% url 'Study:category' category.pk %}">{{ category.name }} </a> (23)
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 分类 end-->
+                </aside>
+                <!-- 分类、标签、关于 end-->
+            </div>
+        </div>
+    </div>
+{% endblock main %}

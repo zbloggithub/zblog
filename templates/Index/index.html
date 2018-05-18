@@ -1,0 +1,42 @@
+{% extends 'Index/Ibase.html' %}
+{% block Smain %}
+    <div class="cols-holder">
+        <!-- 博客正文 -->
+        <!-- 上面两篇博客 begin-->
+        <div class="cols-holder">
+            <!-- 第一篇博客begin -->
+            {% for post in SPost_list %}
+                {% if post.pk|divisibleby:2 %}
+                {% else  %}
+                <article class="post wow fadeInLeft" data-wow-delay="0.6s">
+                    <div class="img-holder"><a href="{{ post.get_absolute_url }}"><img src="/static/media/{{ post.img }}" alt="image description"></a></div>
+                    <div class="text-wrap">
+                        <time datetime="2011-01-12">{{ post.created_time }}<a href="#"> - {{ post.category }}</a></time>
+                        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                        <p>{{ post.category }}</p>
+                        <a href="{{ post.get_absolute_url }}" class="link-more">继续阅读</a>
+                    </div>
+                </article>
+                {% endif %}
+                {% endfor %}
+                <!-- 第一篇博客 end -->
+                <!-- 第二篇博客begin -->
+                {% for post in SPost_list %}
+                {% if post.pk|divisibleby:2 %}
+                <article class="post wow fadeInRight" data-wow-delay="0.6s">
+                    <div class="img-holder"><a href="{{ post.get_absolute_url }}"><img src="/static/media/{{ post.img }}" alt="image description"></a></div>
+                    <div class="text-wrap">
+                        <time datetime="2011-01-12">{{ post.created_time }} - <a href="#">{{ post.category }}</a></time>
+                        <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                        <p>{{ post.category }}</p>
+                        <a href="{{ post.get_absolute_url }}" class="link-more">继续阅读</a>
+                    </div>
+                </article>
+                <!-- 第二篇博客 end -->
+            {% endif %}
+            {% endfor %}
+        </div>
+        <!-- 上面两篇博客 end -->
+        <!-- 博客正文 end -->
+    </div>
+{% endblock Smain %}

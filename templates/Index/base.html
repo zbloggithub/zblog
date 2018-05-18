@@ -1,0 +1,302 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>首页</title>
+	<!-- 图标字体库 -->
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<!-- bootstrap前端开发框架 -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<!-- 滑动，轮播图的效果 -->
+	<link rel="stylesheet" href="{% static 'css/slick.css' %}">
+	<!-- css动画 -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- 主要的样式 -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<!-- 响应式布局 -->
+	<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+	<!-- 网站的主要颜色 -->
+	<link rel="stylesheet" href="{% static 'css/colors.css' %}">
+    <!-- 小方面的修饰 -->
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+</head>
+<body>
+	<!-- 网页加载时所显示的图片 -->
+	<div class="loader-holder">
+		<div class="shaft-load3">
+			<div class="shaft1"></div>
+			<div class="shaft2"></div>
+			<div class="shaft3"></div>
+			<div class="shaft4"></div>
+			<div class="shaft5"></div>
+			<div class="shaft6"></div>
+			<div class="shaft7"></div>
+			<div class="shaft8"></div>
+			<div class="shaft9"></div>
+			<div class="shaft10"></div>
+		</div>
+	</div>
+	<!-- 网页加载时所显示的图片 end-->
+	<!-- 首页所有的元素 -->
+	<div id="wrapper">
+		<!-- 最上面的目录导航栏 -->
+		<header id="header" class="version-i">
+			<div class="stick-holder">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-3 col-sm-2">
+							<!-- 左上角的logo -->
+							<div class="logo"><a href="{% url 'Index:index' %}"><img src="{% static 'images/ZBlog2.png' %}" alt="dot"></a></div>
+							<!-- 左上角的logo end-->
+						</div>
+						<div class="col-xs-9 col-sm-10 nav-holder">
+							<nav id="nav" class="navbar navbar-default">
+								<!-- 右上角的目录 -->
+								<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+									<ul class="nav navbar-nav navbar-right">
+										<li><a href="{% url 'Index:index' %}">首页</a></li>
+										<li><a href="{% url 'Study:index' %}">学无止境</a></li>
+										<li><a href="{% url 'life:index' %}">慢生活</a></li>
+										<li><a href="regard.html">关于我</a></li>
+										<li><a href="message.html">留言</a></li>
+									</ul>
+								</div>
+								<!-- 右上角的目录 -->
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- 最上面的目录导航栏 end-->
+		<!-- 博客正文 -->
+		<main id="main" role="main">
+			<div class="home-box">
+				<section class="slideshow">
+                    <!-- 首页背景图 -->
+					<div class="slide" style="background-image: url({% static 'images/image01.jpg' %});">
+						<div class="align-holder">
+							<div class="align">
+								<div class="container">
+									<div class="row">
+										<header class="header col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+											<div class="title-box"><strong class="title">首页</strong></div>
+											<h1>生活不止眼前的苟且<br>还有远方的苟且</h1>
+										</header>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 首页背景图 end-->
+                    <!-- 学习博客背景图 -->
+					<div class="slide" style="background-image: url({% static 'images/image08.jpg' %});">
+						<div class="align-holder">
+							<div class="align">
+								<div class="container">
+									<div class="row">
+										<header class="header col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+											<div class="title-box"><strong class="title">学无止境</strong></div>
+											<h1>有时候你不努力一下<br>不知道什么叫绝望</h1>
+										</header>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 学习博客背景图 end-->
+					<!-- 个人博客背景图 -->
+					<div class="slide" style="background-image: url({% static 'images/image09.jpg' %});">
+						<div class="align-holder">
+							<div class="align">
+								<div class="container">
+									<div class="row">
+										<header class="header col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+											<div class="title-box"><strong class="title">慢生活</strong></div>
+											<h1>长得丑就是病<br>不然整形医院怎么叫医院？</h1>
+										</header>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 个人博客背景图 end-->
+					<!-- 关于背景图 -->
+					<div class="slide" style="background-image: url({% static 'images/image10.jpg' %});">
+						<div class="align-holder">
+							<div class="align">
+								<div class="container">
+									<div class="row">
+										<header class="header col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+											<div class="title-box"><strong class="title">关于我</strong></div>
+											<h1>喜欢一个人就去表白<br>万一成备胎了呢</h1>
+										</header>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 关于背景图 end-->
+					<!-- 留言背景图 -->
+					<div class="slide" style="background-image: url({% static 'images/image11.jpg' %});">
+						<div class="align-holder">
+							<div class="align">
+								<div class="container">
+									<div class="row">
+										<header class="header col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+											<div class="title-box"><strong class="title">留言</strong></div>
+											<h1>喜欢一个人就去表白<br>万一成备胎了呢</h1>
+										</header>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 留言背景图 end-->
+				</section>
+				<!-- 轮播图 -->
+				<div class="switcher">
+					<div class="center-block">
+						<!-- 轮播图 -->
+						<div class="switcher-mask">
+                            <!-- 首页轮播图 -->
+							<div class="slide">
+								<div class="switcher-slide">
+									<div class="slide-holder">
+										<div class="img-holder">
+											<a href="{% url 'Index:index' %}"><img src="{% static 'images/image01-02.jpg' %}" alt="image description"></a>
+										</div>
+										<h2><a href="{% url 'Index:index' %}"></a></h2>
+										<time datetime="2011-01-12"><a href="#"></a></time>
+									</div>
+								</div>
+							</div>
+							<!-- 首页轮播图 end-->
+                            <!-- 学习博客轮播图 -->
+							<div class="slide">
+								<div class="switcher-slide">
+									<div class="slide-holder">
+										<div class="img-holder">
+											<a href="{% url 'Study:index' %}"><img src="{% static 'images/image08-02.jpg' %}" alt="image description"></a>
+										</div>
+										<h2><a href="{% url 'Study:index' %}"></a></h2>
+										<time datetime="2011-01-12"><a href="#"></a></time>
+									</div>
+								</div>
+							</div>
+							<!-- 学习博客轮播图 end-->
+							<!-- 个人博客轮播图 -->
+							<div class="slide">
+								<div class="switcher-slide">
+									<div class="slide-holder">
+										<div class="img-holder">
+                                            <a href="{% url 'life:index' %}"><img src="{% static 'images/image09-02.jpg' %}" alt="image description"></a>
+										</div>
+										<h2><a href="{% url 'life:index' %}"></a></h2>
+										<time datetime="2011-01-12"><a href="#"></a></time>
+									</div>
+								</div>
+							</div>
+							<!-- 个人博客轮播图 end-->
+							<!-- 关于轮播图 -->
+							<div class="slide">
+								<div class="switcher-slide">
+									<div class="slide-holder">
+										<div class="img-holder">
+                                            <a href="regard.html"><img src="{% static 'images/image10-02.jpg' %}" alt="image description"></a>
+										</div>
+										<h2><a href="single-post.html"></a></h2>
+										<time datetime="2011-01-12"><a href="#"></a></time>
+									</div>
+								</div>
+							</div>
+							<!-- 关于轮播图 end-->
+							<!-- 留言轮播图 -->
+							<div class="slide">
+								<div class="switcher-slide">
+									<div class="slide-holder">
+										<div class="img-holder">
+                                            <a href="message.html"><img src="{% static 'images/image11-02.jpg' %}" alt="image description"></a>
+										</div>
+										<h2><a href="single-post.html"></a></h2>
+										<time datetime="2011-01-12"><a href="#"></a></time>
+									</div>
+								</div>
+							</div>
+							<!-- 留言轮播图 end-->
+						</div>
+						<!-- 轮播图 end-->
+					</div>
+				</div>
+				<!-- 轮播图 end-->
+			</div>
+			<!-- 正文 -->
+            {% block main %}
+            {% endblock main %}
+			<!-- 正文 end-->
+			<!-- 自动播放的图片 -->
+			<div class="instagram-slider container-fluid">
+				<div class="row">
+					<div class="mask">
+						<div class="slideset">
+							<div class="slide">
+								<a href="#"><img src="{% static 'images/image01.jpg' %}" alt="image description"></a>
+							</div>
+							<div class="slide">
+								<a href="#"><img src="{% static 'images/image02.jpg' %}" alt="image description"></a>
+							</div>
+							<div class="slide">
+								<a href="#"><img src="{% static 'images/image03.jpg' %}" alt="image description"></a>
+							</div>
+							<div class="slide">
+								<a href="#"><img src="{% static 'images/image04.jpg' %}" alt="image description"></a>
+							</div>
+							<div class="slide">
+								<a href="#"><img src="{% static 'images/image01.jpg' %}" alt="image description"></a>
+							</div>
+							<div class="slide">
+								<a href="#"><img src="{% static 'images/image02.jpg' %}" alt="image description"></a>
+							</div>
+							<div class="slide">
+								<a href="#"><img src="{% static 'images/image03.jpg' %}" alt="image description"></a>
+							</div>
+							<div class="slide">
+								<a href="#"><img src="{% static 'images/image04.jpg' %}" alt="image description"></a>
+							</div>
+							<div class="slide">
+								<a href="#"><img src="{% static 'images/image01.jpg' %}" alt="image description"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 自动播放的图片 end-->
+		</main>
+		<!-- 博客正文 end-->
+		<!-- 页脚 -->
+		<footer id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<p>Copyright &copy; 2018.江西师范大学.</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- 页脚 end-->
+		<!-- 返回顶部 -->
+    	<span id="back-top" class="fa fa-angle-up"></span>
+        <!-- 返回顶部 end-->
+    	<div id="style-changer" data-src="inc/style-changer.html"></div>
+	</div>
+    <!-- 首页所有的元素 end-->
+	<!-- js库 -->
+	<script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- 主要的Jquery部分 -->
+    <script src="{% static 'js/jquery.main.js' %}"></script>
+</body>
+</html>
